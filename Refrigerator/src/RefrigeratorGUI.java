@@ -7,12 +7,17 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 /**
+ * @author Randy, Noah, Ricky
+ *
  * GUI that implements RefrigeratorDisplay and shows an interface of a refrigerator
  */
 public class RefrigeratorGUI extends JFrame implements ActionListener, RefrigeratorDisplay {
 
     private Refrigerator refrigerator;
 
+    /**
+     * ActionEvent buttons
+     */
     private JButton fridgeTempRequest = new JButton("Set fridge temp");
     private JButton freezerTempRequest = new JButton("Set freezer temp");
     private JButton roomTempRequest = new JButton("Set room temp");
@@ -21,17 +26,26 @@ public class RefrigeratorGUI extends JFrame implements ActionListener, Refrigera
     private JButton freezerDoorCloser = new JButton("Close freezer door");
     private JButton freezerDoorOpener = new JButton("Open freezer door");
 
+    /**
+     * Status labels
+     */
     private JLabel fridgeDoorStatus = new JLabel("Fridge door closed");
     private JLabel freezerDoorStatus = new JLabel("Freezer door closed");
     private JLabel fridgeLightStatus = new JLabel("Fridge light off");
     private JLabel freezerLightStatus = new JLabel("Freezer light off");
-    private JLabel fridgeTempStatus = new JLabel("Fridge temp < >");
-    private JLabel freezerTempStatus = new JLabel("Freezer temp < >");
-    private JLabel roomTempStatus = new JLabel("Room temp < >");
+    private JLabel fridgeTempStatus = new JLabel("Fridge temp <null>");
+    private JLabel freezerTempStatus = new JLabel("Freezer temp <null>");
+    private JLabel roomTempStatus = new JLabel("Room temp <null>");
 
-    protected JTextField desiredFridgeTempInput = new JTextField("Desired fridge temp");
-    protected JTextField desiredFreezerTempInput = new JTextField("Desired freezer temp");
-    protected JTextField desiredRoomTempInput = new JTextField("Desired room temp");
+    /**
+     * Labels and textfields for desired temps of fridge, freezer, and room
+     */
+    private JLabel desiredFridgeTempLabel = new JLabel("Desired fridge temp");
+    private JLabel desiredFreezerTempLabel = new JLabel("Desired freezer temp");
+    private JLabel desiredRoomTempLabel = new JLabel("Desired room temp");
+    private JTextField desiredFridgeTempInput = new JTextField("", 5);
+    private JTextField desiredFreezerTempInput = new JTextField("", 5);
+    private JTextField desiredRoomTempInput = new JTextField("", 5);
 
     /**
      * Sets up the layout of the Refrigerator GUI
@@ -44,13 +58,16 @@ public class RefrigeratorGUI extends JFrame implements ActionListener, Refrigera
             }
         });
         getContentPane().setLayout(new FlowLayout());
-        //Fridge Temp
+        //Fridge Temp request
+        getContentPane().add(desiredFridgeTempLabel);
         getContentPane().add(desiredFridgeTempInput);
         getContentPane().add(fridgeTempRequest);
-        //Freezer temp
+        //Freezer temp request
+        getContentPane().add(desiredFreezerTempLabel);
         getContentPane().add(desiredFreezerTempInput);
         getContentPane().add(freezerTempRequest);
-        //Room temp
+        //Room temp request
+        getContentPane().add(desiredRoomTempLabel);
         getContentPane().add(desiredRoomTempInput);
         getContentPane().add(roomTempRequest);
         //Fridge door

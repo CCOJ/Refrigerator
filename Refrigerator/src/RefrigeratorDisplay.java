@@ -1,4 +1,6 @@
 /**
+ * @author Randy, Noah, Ricky
+ *
  * This implements the essential features of the refrigerator.
  */
 public interface RefrigeratorDisplay {

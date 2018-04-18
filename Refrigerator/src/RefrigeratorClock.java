@@ -1,4 +1,6 @@
 /**
+ * @author Randy, Noah, Ricky
+ *
  * This runs the clock on the refrigerator to allow time
  * when idling (warming) or cooling
  */

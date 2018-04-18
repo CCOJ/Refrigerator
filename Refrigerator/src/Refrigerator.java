@@ -1,7 +1,7 @@
 import java.sql.Ref;
 
 /**
- * @author , Noah, Ricky
+ * @author Randy, Noah, Ricky
  *
  * This represents a refrigerator. It has all states of a refrigerator that includes
  * both a freezer and fridge door. There are also methods such as closing and opening doors.
@@ -12,18 +12,17 @@ import java.sql.Ref;
 public class Refrigerator {
 
     public enum States {
-        FRIDGE_DOOR_OPENED_FREEZER_DOOR_OPENED_STATE, //Fridge open, freezer open
-        FRIDGE_DOOR_CLOSED_FREEZER_DOOR_OPENED_STATE, //Fridge closed, freezer open
-        FRIDGE_DOOR_OPENED_FREEZER_DOOR_CLOSED_STATE, //Fridge open, freezer closed
-        FRIDGE_DOOR_CLOSED_FREEZER_DOOR_CLOSED_STATE  //Fridge closed, freezer closed
+        FRIDGE_DOOR_OPENED_FREEZER_DOOR_OPENED_STATE, //Fridge open, freezer open; OO
+        FRIDGE_DOOR_CLOSED_FREEZER_DOOR_OPENED_STATE, //Fridge closed, freezer open; CO
+        FRIDGE_DOOR_OPENED_FREEZER_DOOR_CLOSED_STATE, //Fridge open, freezer closed; OC
+        FRIDGE_DOOR_CLOSED_FREEZER_DOOR_CLOSED_STATE  //Fridge closed, freezer closed; CC
     };
 
     private States currentState;                 //The current state of the refrigerator
     private static Refrigerator instance;        //Instance of refrigerator
     private RefrigeratorDisplay display;         //Displays the refrigerator
-    private int fridgeTemp, desiredFridgeTemp;   //37 to 41 degree Fahrenheit
-    private int freezerTemp, desiredFreezerTemp; //0 to -9 degree Fahrenheit
-    private int roomTemp;                        //50 to 110 degree Fahrenheit
+    private int fridgeTemp, desiredFridgeTemp,   //Temperatures in Fahrenheit
+            freezerTemp, desiredFreezerTemp, roomTemp;
 
     /**
      * Private constructor to support singleton pattern.
@@ -32,15 +31,18 @@ public class Refrigerator {
      */
     private Refrigerator() {
         currentState = States.FRIDGE_DOOR_CLOSED_FREEZER_DOOR_CLOSED_STATE;
-        display = new RefrigeratorGUI();
-        display.setRefrigerator(this);
-        display.fridgeLightOff();
-        display.freezerLightOff();
-        display.fridgeDoorClosed();
-        display.freezerDoorClosed();
-        fridgeTemp = 37;
-        freezerTemp = -9;
-        roomTemp = 90;
+        fridgeTemp = 37;                 //Default value to be set by properties.cfg
+        freezerTemp = -9;                //Default value to be set by properties.cfg
+        roomTemp = 90;                   //Default value to be set by properties.cfg
+        display = new RefrigeratorGUI(); //Set up display
+        display.setRefrigerator(this);   //Set the display to use this refrigerator
+        display.fridgeDoorClosed();      //Close fridge door
+        display.fridgeLightOff();        //Turn fridge light off
+        display.freezerDoorClosed();     //Close freezer door
+        display.freezerLightOff();       //Turn freezer light off
+        display.setFridgeTempDisplay();  //Set up fridge temp display
+        display.setFreezerTempDisplay(); //Set up freezer temp display
+        display.setRoomTempDisplay();    //Set up room temp display
     }
 
     /**
@@ -136,35 +138,54 @@ public class Refrigerator {
     }
 
     /**
-     * Processes desired fridge temp request
+     * Processes desired fridge temp request.
+     * Only 37 to 41 degree Fahrenheit.
      */
     public void processFridgeTempRequest(int temp) {
-        //Need to add check for correct temp input
-        setDesiredFridgeTemp(temp);
-        //Temporary below
+        if (temp < 37) { //Checks request and limits to the allowed fridge temp range
+            temp = 37;
+        } else if (temp > 41) {
+            temp = 41;
+        }
+
+        setDesiredFridgeTemp(temp); //Sets desired fridge temp
+
+        //Temporary below for testing
         setFridgeTemp(temp);
         display.setFridgeTempDisplay();
     }
 
     /**
-     * Processes desired freezer temp request
+     * Processes desired freezer temp request.
+     * Only 0 to -9 degree Fahrenheit.
      */
     public void processFreezerTempRequest(int temp) {
-        //Need to add check for correct temp input
-        setDesiredFreezerTemp(temp);
-        //Temporary below
+        if (temp < -9) { //Checks request and limits to the allowed freezer temp range
+            temp = -9;
+        } else if (temp > 0) {
+            temp = 0;
+        }
+
+        setDesiredFreezerTemp(temp); //Sets desired freezer temp
+
+        //Temporary below for testing
         setFreezerTemp(temp);
         display.setFreezerTempDisplay();
     }
 
     /**
-     * Proccess desired room temp request
+     * Proccess desired room temp request.
+     * Only 50 to 110 degree Fahrenheit.
      */
     public void processRoomTempRequest(int temp) {
-        //Need to add check for correct temp input
-        setRoomTemp(temp);
-        //Temporary below
-        display.setRoomTempDisplay();
+        if (temp < 50) { //Checks request and limits to the allowed room temp range
+            temp = 50;
+        } else if (temp > 110) {
+            temp = 110;
+        }
+
+        setRoomTemp(temp); //Sets new room temp
+        display.setRoomTempDisplay(); //Updates GUI
     }
 
     /**

@@ -10,95 +10,26 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="Refrigerator.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Refrigerator.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="237">
-                    <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
-                    <folding>
-                      <element signature="e#2025#2026#0" expanded="true" />
-                      <element signature="e#2050#2051#0" expanded="true" />
-                      <element signature="e#2265#2266#0" expanded="true" />
-                      <element signature="e#2305#2306#0" expanded="true" />
-                      <element signature="e#2225#2226#0" expanded="true" />
-                      <element signature="e#2259#2260#0" expanded="true" />
-                      <element signature="e#2593#2594#0" expanded="true" />
-                      <element signature="e#2634#2635#0" expanded="true" />
-                      <element signature="e#2380#2381#0" expanded="true" />
-                      <element signature="e#2411#2412#0" expanded="true" />
-                      <element signature="e#2492#2493#0" expanded="true" />
-                      <element signature="e#2525#2526#0" expanded="true" />
-                      <element signature="e#3033#3034#0" expanded="true" />
-                      <element signature="e#3073#3074#0" expanded="true" />
-                      <element signature="e#2560#2561#0" expanded="true" />
-                      <element signature="e#2594#2595#0" expanded="true" />
-                      <element signature="e#3333#3334#0" expanded="true" />
-                      <element signature="e#3374#3375#0" expanded="true" />
-                      <element signature="e#2727#2728#0" expanded="true" />
-                      <element signature="e#2758#2759#0" expanded="true" />
-                      <element signature="e#6249#6250#0" expanded="true" />
-                      <element signature="e#6281#6282#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="MicrowaveDisplay.java" pinned="false" current-in-tab="false">
-              <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/MicrowaveDisplay.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="255">
-                    <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="GUIDisplay.java" pinned="false" current-in-tab="false">
-              <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/GUIDisplay.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-1090">
-                    <caret line="28" selection-start-line="28" selection-end-line="28" />
-                    <folding>
-                      <element signature="imports" expanded="true" />
-                      <element signature="e#1719#1832#0" expanded="true" />
-                      <element signature="e#1831#1832#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="Clock.java" pinned="false" current-in-tab="false">
-              <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/Clock.java">
-                <provider selected="true" editor-type-id="text-editor" />
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Microwave.java" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/Microwave.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Refrigerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Refrigerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1796">
+            <state relative-caret-position="-4">
+              <caret line="187" column="51" selection-start-line="187" selection-start-column="51" selection-end-line="187" selection-end-column="51" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#9306#9307#0" expanded="true" />
+                <element signature="e#9383#9384#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RefrigeratorClock.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RefrigeratorClock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RefrigeratorClock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="34">
+              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -106,41 +37,21 @@
       <file leaf-file-name="RefrigeratorDisplay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RefrigeratorDisplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+            <state relative-caret-position="625">
+              <caret line="65" column="34" lean-forward="true" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="66" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RefrigeratorGUI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RefrigeratorGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RefrigeratorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="170" column="7" selection-start-line="170" selection-start-column="7" selection-end-line="170" selection-end-column="7" />
+            <state relative-caret-position="-1409">
+              <caret line="65" column="54" lean-forward="true" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1601#1737#0" expanded="true" />
-                <element signature="e#1736#1737#0" expanded="true" />
-                <element signature="e#5041#5042#0" expanded="true" />
-                <element signature="e#5089#5090#0" expanded="true" />
-                <element signature="e#5177#5178#0" expanded="true" />
-                <element signature="e#5239#5240#0" expanded="true" />
-                <element signature="e#5326#5327#0" expanded="true" />
-                <element signature="e#5388#5389#0" expanded="true" />
-                <element signature="e#5477#5478#0" expanded="true" />
-                <element signature="e#5539#5540#0" expanded="true" />
-                <element signature="e#5628#5629#0" expanded="true" />
-                <element signature="e#5692#5693#0" expanded="true" />
-                <element signature="e#5806#5807#0" expanded="true" />
-                <element signature="e#5866#5867#0" expanded="true" />
+                <element signature="e#5922#5923#0" expanded="true" />
                 <element signature="e#5982#5983#0" expanded="true" />
-                <element signature="e#6043#6044#0" expanded="true" />
-                <element signature="e#6160#6161#0" expanded="true" />
-                <element signature="e#6222#6223#0" expanded="true" />
-                <element signature="e#6341#6342#0" expanded="true" />
-                <element signature="e#6404#6405#0" expanded="true" />
-                <element signature="e#6817#6818#0" expanded="true" />
-                <element signature="e#6857#6858#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,13 +70,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/RefrigeratorClock.java" />
-        <option value="$PROJECT_DIR$/src/RefrigeratorGUI.java" />
-        <option value="$PROJECT_DIR$/src/Refrigerator.java" />
         <option value="$PROJECT_DIR$/src/RefrigeratorDisplay.java" />
+        <option value="$PROJECT_DIR$/src/Refrigerator.java" />
+        <option value="$PROJECT_DIR$/src/RefrigeratorGUI.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="1294" />
     <option name="height" value="1057" />
@@ -175,6 +86,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -192,8 +105,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -275,33 +186,32 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1294" height="1057" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="2576" height="1066" extended-state="6" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.32908705" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32908705" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960877" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32908705" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3280757" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12460937" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
     </layout>
@@ -310,73 +220,31 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/MicrowaveDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/Clock.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/GUIDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1090">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1719#1832#0" expanded="true" />
-            <element signature="e#1831#1832#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/Microwave.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1796">
+        <state>
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RefrigeratorGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/RefrigeratorDisplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="170" column="7" selection-start-line="170" selection-start-column="7" selection-end-line="170" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1601#1737#0" expanded="true" />
-            <element signature="e#1736#1737#0" expanded="true" />
-            <element signature="e#5041#5042#0" expanded="true" />
-            <element signature="e#5089#5090#0" expanded="true" />
-            <element signature="e#5177#5178#0" expanded="true" />
-            <element signature="e#5239#5240#0" expanded="true" />
-            <element signature="e#5326#5327#0" expanded="true" />
-            <element signature="e#5388#5389#0" expanded="true" />
-            <element signature="e#5477#5478#0" expanded="true" />
-            <element signature="e#5539#5540#0" expanded="true" />
-            <element signature="e#5628#5629#0" expanded="true" />
-            <element signature="e#5692#5693#0" expanded="true" />
-            <element signature="e#5806#5807#0" expanded="true" />
-            <element signature="e#5866#5867#0" expanded="true" />
-            <element signature="e#5982#5983#0" expanded="true" />
-            <element signature="e#6043#6044#0" expanded="true" />
-            <element signature="e#6160#6161#0" expanded="true" />
-            <element signature="e#6222#6223#0" expanded="true" />
-            <element signature="e#6341#6342#0" expanded="true" />
-            <element signature="e#6404#6405#0" expanded="true" />
-            <element signature="e#6817#6818#0" expanded="true" />
-            <element signature="e#6857#6858#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1105">
+          <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RefrigeratorDisplay.java">
+    <entry file="file://$PROJECT_DIR$/src/RefrigeratorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+        <state relative-caret-position="2482">
+          <caret line="170" column="7" selection-start-line="170" selection-start-column="7" selection-end-line="170" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5922#5923#0" expanded="true" />
+            <element signature="e#5982#5983#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -387,33 +255,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/MicrowaveDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/GUIDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1090">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/Clock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Class Project 2 Iteration 1 Source/Class Project 2 Version 1/src/Microwave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="115" column="28" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RefrigeratorClock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RefrigeratorDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="65" column="34" lean-forward="true" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Refrigerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
+        <state relative-caret-position="-4">
+          <caret line="187" column="51" selection-start-line="187" selection-start-column="51" selection-end-line="187" selection-end-column="51" />
           <folding>
-            <element signature="e#2025#2026#0" expanded="true" />
-            <element signature="e#2050#2051#0" expanded="true" />
-            <element signature="e#2265#2266#0" expanded="true" />
-            <element signature="e#2305#2306#0" expanded="true" />
-            <element signature="e#2225#2226#0" expanded="true" />
-            <element signature="e#2259#2260#0" expanded="true" />
-            <element signature="e#2593#2594#0" expanded="true" />
-            <element signature="e#2634#2635#0" expanded="true" />
-            <element signature="e#2380#2381#0" expanded="true" />
-            <element signature="e#2411#2412#0" expanded="true" />
-            <element signature="e#2492#2493#0" expanded="true" />
-            <element signature="e#2525#2526#0" expanded="true" />
-            <element signature="e#3033#3034#0" expanded="true" />
-            <element signature="e#3073#3074#0" expanded="true" />
-            <element signature="e#2560#2561#0" expanded="true" />
-            <element signature="e#2594#2595#0" expanded="true" />
-            <element signature="e#3333#3334#0" expanded="true" />
-            <element signature="e#3374#3375#0" expanded="true" />
-            <element signature="e#2727#2728#0" expanded="true" />
-            <element signature="e#2758#2759#0" expanded="true" />
-            <element signature="e#6249#6250#0" expanded="true" />
-            <element signature="e#6281#6282#0" expanded="true" />
+            <element signature="e#9306#9307#0" expanded="true" />
+            <element signature="e#9383#9384#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RefrigeratorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1409">
+          <caret line="65" column="54" lean-forward="true" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5922#5923#0" expanded="true" />
+            <element signature="e#5982#5983#0" expanded="true" />
           </folding>
         </state>
       </provider>
