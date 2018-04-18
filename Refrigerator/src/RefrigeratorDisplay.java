@@ -5,6 +5,7 @@ public interface RefrigeratorDisplay {
 
     /**
      * Keeps the refrigerator
+     *
      * @param refrigerator; the Refrigerator object
      */
     public void setRefrigerator(Refrigerator refrigerator);
@@ -49,9 +50,18 @@ public interface RefrigeratorDisplay {
      */
     public void freezerLightOff();
 
+    /**
+     * Sets temperature for fridge; Only 37 to 41 degree Fahrenheit
+     */
+    public void setFridgeTempDisplay();
 
     /**
-     * TODO
-     * Also need to add room temp, and box input to set temps for room, freezer, and fridge
+     * Sets temperature for freezer; Only 0 to -9 degree Fahrenheit
      */
+    public void setFreezerTempDisplay();
+
+    /**
+     * Sets temperature for room; Only 50 to 110 degree Fahrenheit
+     */
+    public void setRoomTempDisplay();
 }

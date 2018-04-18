@@ -18,14 +18,12 @@ public class Refrigerator {
         FRIDGE_DOOR_CLOSED_FREEZER_DOOR_CLOSED_STATE  //Fridge closed, freezer closed
     };
 
-    private States currentState;          //The current state of the refrigerator
-    private static Refrigerator instance; //Instance of refrigerator
-    private RefrigeratorDisplay display;  //Displays the refrigerator
-    private int fridgeTemp;               //37 to 41 degree Fahrenheit
-    private int freezerTemp;              //0 to -9 degree Fahrenheit
-    private int outsideTemp;              //50 to 110 degree Fahrenheit
-    //Add room temp, idle, and cooling
-    //Also add clock
+    private States currentState;                 //The current state of the refrigerator
+    private static Refrigerator instance;        //Instance of refrigerator
+    private RefrigeratorDisplay display;         //Displays the refrigerator
+    private int fridgeTemp, desiredFridgeTemp;   //37 to 41 degree Fahrenheit
+    private int freezerTemp, desiredFreezerTemp; //0 to -9 degree Fahrenheit
+    private int roomTemp;                        //50 to 110 degree Fahrenheit
 
     /**
      * Private constructor to support singleton pattern.
@@ -40,6 +38,9 @@ public class Refrigerator {
         display.freezerLightOff();
         display.fridgeDoorClosed();
         display.freezerDoorClosed();
+        fridgeTemp = 37;
+        freezerTemp = -9;
+        roomTemp = 90;
     }
 
     /**
@@ -52,6 +53,118 @@ public class Refrigerator {
             return instance = new Refrigerator();
         }
         return instance;
+    }
+
+    /**
+     * Set fridge temp
+     * @param temp; Fridge temp
+     */
+    public void setFridgeTemp(int temp) {
+        fridgeTemp = temp;
+    }
+
+    /**
+     * Set desired fridge temp
+     * @param temp; Desired fridge temp
+     */
+    public void setDesiredFridgeTemp(int temp) {
+        desiredFridgeTemp = temp;
+    }
+
+    /**
+     * Set freezer temp
+     * @param temp; Freezer temp
+     */
+    public void setFreezerTemp(int temp) {
+        freezerTemp = temp;
+    }
+
+    /**
+     * Set desired freezer temp
+     * @param temp; Desired freezer temp
+     */
+    public void setDesiredFreezerTemp(int temp) {
+        desiredFreezerTemp = temp;
+    }
+
+    /**
+     * Set room temp
+     * @param temp; Room temp
+     */
+    public void setRoomTemp(int temp) {
+        roomTemp = temp;
+    }
+
+    /**
+     * Gets fridge temp
+     * @return fridgeTemp
+     */
+    public int getFridgeTemp() {
+        return fridgeTemp;
+    }
+
+    /**
+     * Gets desired fridge temp
+     * @return desiredFridgeTemp
+     */
+    public int getDesiredFridgeTemp() {
+        return desiredFridgeTemp;
+    }
+
+    /**
+     * Gets freezer temp
+     * @return freezerTemp
+     */
+    public int getFreezerTemp() {
+        return freezerTemp;
+    }
+
+    /**
+     * Gets desired freezer temp
+     * @return desiredFreezerTemp
+     */
+    public int getDesiredFreezerTemp() {
+        return desiredFreezerTemp;
+    }
+
+    /**
+     * Gets room temp
+     * @return roomTemp
+     */
+    public int getRoomTemp() {
+        return roomTemp;
+    }
+
+    /**
+     * Processes desired fridge temp request
+     */
+    public void processFridgeTempRequest(int temp) {
+        //Need to add check for correct temp input
+        setDesiredFridgeTemp(temp);
+        //Temporary below
+        setFridgeTemp(temp);
+        display.setFridgeTempDisplay();
+    }
+
+    /**
+     * Processes desired freezer temp request
+     */
+    public void processFreezerTempRequest(int temp) {
+        //Need to add check for correct temp input
+        setDesiredFreezerTemp(temp);
+        //Temporary below
+        setFreezerTemp(temp);
+        display.setFreezerTempDisplay();
+    }
+
+    /**
+     * Proccess desired room temp request
+     */
+    public void processRoomTempRequest(int temp) {
+        //Need to add check for correct temp input
+        setRoomTemp(temp);
+        //Temporary below
+        display.setRoomTempDisplay();
     }
 
     /**
@@ -137,6 +250,8 @@ public class Refrigerator {
             display.freezerLightOn();
         }
     }
+
+    //TODO: COOLING AND IDLING PROCESS
 
     /**
      * Ticks the clock that will pass time in order to change the temperature

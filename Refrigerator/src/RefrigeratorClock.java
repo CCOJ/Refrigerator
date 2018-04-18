@@ -1,3 +1,7 @@
+/**
+ * This runs the clock on the refrigerator to allow time
+ * when idling (warming) or cooling
+ */
 public class RefrigeratorClock implements Runnable {
 
     private static Refrigerator refrigerator;
