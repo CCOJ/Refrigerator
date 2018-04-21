@@ -10,18 +10,18 @@ import java.util.Observer;
  */
 public class RefrigeratorContext implements Observer {
 	public static enum Events {
-		FRIDGE_DOOR_CLOSED_FREEZER_DOOR_CLOSED_EVENT,
-                FRIDGE_DOOR_CLOSED_FREEZER_DOOR_OPEN_EVENT,
-                FRIDGE_DOOR_OPEN_FREEZER_DOOR_CLOSED_EVENT,
-                FRIDGE_DOOR_OPEN_FREEZER_DOOR_OPEN_EVENT
+		FRIDGE_DOOR_CLOSED_EVENT,
+                FRIDGE_DOOR_OPENED_EVENT,
+                FREEZER_DOOR_CLOSED_EVENT,
+                FREEZER_DOOR_OPENED_EVENT
 	};
 
-	private static RefrigeratorDisplay RefrigeratorDisplay;
+	private static RefrigeratorDisplay refrigeratorDisplay;
 	private RefrigeratorState currentState;
 	private static RefrigeratorContext instance;
 	static {
 		instance = new RefrigeratorContext();
-		RefrigeratorDisplay = RefrigeratorDisplay.instance();
+		refrigeratorDisplay = RefrigeratorDisplay.instance();
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class RefrigeratorContext implements Observer {
 	}
 
 	public void initialize() {
-		instance.changeCurrentState(DoorClosedState.instance());
+		instance.changeCurrentState(FridgeClosedFreezerClosedState.instance());
 		RefrigeratorClock.instance().addObserver(instance);
 	}
 
@@ -87,7 +87,7 @@ public class RefrigeratorContext implements Observer {
 	 * @return the display
 	 */
 	public RefrigeratorDisplay getDisplay() {
-		return RefrigeratorDisplay;
+		return refrigeratorDisplay;
 	}
 
 }

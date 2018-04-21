@@ -8,13 +8,13 @@
  *
  * @author Randy, Noah, Ricky
  */
-public class FridgeOpenFreezerClosedState  extends RefrigeratorState{
+public class FridgeClosedFreezerOpenState  extends RefrigeratorState{
     
-        private static FridgeOpenFreezerClosedState instance;
+        private static FridgeClosedFreezerOpenState instance;
         
         
 	static {
-		instance = new FridgeOpenFreezerClosedState();
+		instance = new FridgeClosedFreezerOpenState();
 	}
 
 	/**
@@ -22,25 +22,25 @@ public class FridgeOpenFreezerClosedState  extends RefrigeratorState{
 	 * 
 	 * @return this object
 	 */
-	public static FridgeOpenFreezerClosedState instance() {
+	public static FridgeClosedFreezerOpenState instance() {
 		return instance;
 	}
         
 	/**
-	 * Handle cook request and door open events
+	 * Handle events
 	 * 
 	 */
 	@Override
 	public void handle(Object event) {
 		if (event.equals(RefrigeratorContext
-                        .Events.FRIDGE_DOOR_OPEN_FREEZER_DOOR_CLOSED_EVENT)) {
+                        .Events.FRIDGE_DOOR_OPENED_EVENT)) {
                     
-			processFridgeOpen();
+ 			processFridgeOpenFreezerOpen();
 		}
                 else if (event.equals(RefrigeratorContext
-                        .Events.FRIDGE_DOOR_CLOSED_FREEZER_DOOR_OPEN_EVENT)) {
+                        .Events.FREEZER_DOOR_CLOSED_EVENT)) {
                     
-			processFreezerOpen();
+			processFridgeClosedFreezerClosed();
 		}
 	}
 
@@ -48,15 +48,15 @@ public class FridgeOpenFreezerClosedState  extends RefrigeratorState{
 	 * handle door open event
 	 * 
 	 */
-	public void processFridgeOpen() {
-		context.changeCurrentState(FridgeOpenFreezerClosedState.instance());
+	public void processFridgeOpenFreezerOpen() {
+		context.changeCurrentState(FridgeOpenFreezerOpenState.instance());
 	}
-	/**
+        /**
 	 * handle door open event
 	 * 
 	 */
-	public void processFreezerOpen() {
-		context.changeCurrentState(FridgeClosedFreezerOpenState.instance());
+	public void processFridgeClosedFreezerClosed() {
+		context.changeCurrentState(FridgeClosedFreezerClosedState.instance());
 	}
 	/**
 	 * initialize the state
@@ -64,9 +64,9 @@ public class FridgeOpenFreezerClosedState  extends RefrigeratorState{
 	 */
 	@Override
 	public void run() {
-		display.freezerDoorClosed();
+		display.freezerDoorOpened();
                 display.fridgeDoorClosed();
-		display.freezerLightOff();
+		display.freezerLightOn();
                 display.fridgeLightOff();
 	}
 }

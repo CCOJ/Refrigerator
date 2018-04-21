@@ -6,15 +6,14 @@
 
 /**
  *
- * @author Randy, Noah, Ricky
+ *  * @author Randy, Noah, Ricky
  */
-public class FridgeClosedFreezerOpenState  extends RefrigeratorState{
-    
-        private static FridgeClosedFreezerOpenState instance;
+public class FridgeClosedFreezerClosedState extends RefrigeratorState{
+    	private static FridgeClosedFreezerClosedState instance;
         
         
 	static {
-		instance = new FridgeClosedFreezerOpenState();
+		instance = new FridgeClosedFreezerClosedState();
 	}
 
 	/**
@@ -22,25 +21,25 @@ public class FridgeClosedFreezerOpenState  extends RefrigeratorState{
 	 * 
 	 * @return this object
 	 */
-	public static FridgeClosedFreezerOpenState instance() {
+	public static FridgeClosedFreezerClosedState instance() {
 		return instance;
 	}
-        
+
 	/**
-	 * Handle cook request and door open events
+	 * Handle events
 	 * 
 	 */
 	@Override
 	public void handle(Object event) {
 		if (event.equals(RefrigeratorContext
-                        .Events.FRIDGE_DOOR_OPEN_FREEZER_DOOR_OPEN_EVENT)) {
+                        .Events.FRIDGE_DOOR_OPENED_EVENT)) {
                     
-			processFridgeOpen();
+ 			processFridgeOpenFreezerClosed();
 		}
                 else if (event.equals(RefrigeratorContext
-                        .Events.FRIDGE_DOOR_CLOSED_FREEZER_DOOR_CLOSED_EVENT)) {
+                        .Events.FREEZER_DOOR_OPENED_EVENT)) {
                     
-			processFreezerOpen();
+			processFridgeClosedFreezerOpened();
 		}
 	}
 
@@ -48,14 +47,14 @@ public class FridgeClosedFreezerOpenState  extends RefrigeratorState{
 	 * handle door open event
 	 * 
 	 */
-	public void processFridgeOpen() {
+	public void processFridgeOpenFreezerClosed() {
 		context.changeCurrentState(FridgeOpenFreezerClosedState.instance());
 	}
-	/**
+        /**
 	 * handle door open event
 	 * 
 	 */
-	public void processFreezerOpen() {
+	public void processFridgeClosedFreezerOpened() {
 		context.changeCurrentState(FridgeClosedFreezerOpenState.instance());
 	}
 	/**
