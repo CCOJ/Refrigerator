@@ -45,16 +45,6 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
         private JButton freezerDoorCloser = new JButton("Close freezer door");
         private JButton freezerDoorOpener = new JButton("Open freezer door");
 
-        /**
-         * Status labels
-         */
-        private JLabel fridgeDoorStatus = new JLabel("Fridge door closed");
-        private JLabel freezerDoorStatus = new JLabel("Freezer door closed");
-        private JLabel fridgeLightStatus = new JLabel("Fridge light off");
-        private JLabel freezerLightStatus = new JLabel("Freezer light off");
-        private JLabel fridgeTempStatus = new JLabel("Fridge temp <null>");
-        private JLabel freezerTempStatus = new JLabel("Freezer temp <null>");
-        private JLabel roomTempStatus = new JLabel("Room temp <null>");
 
         /**
          * Labels and textfields for desired temps of fridge, freezer, and room
@@ -62,10 +52,24 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
         private JLabel desiredFridgeTempLabel = new JLabel("Desired fridge temp");
         private JLabel desiredFreezerTempLabel = new JLabel("Desired freezer temp");
         private JLabel desiredRoomTempLabel = new JLabel("Desired room temp");
-        private JTextField desiredFridgeTempInput = new JTextField("", 5);
-        private JTextField desiredFreezerTempInput = new JTextField("", 5);
-        private JTextField desiredRoomTempInput = new JTextField("", 5);
+        private JTextField desiredFridgeTempInput = new JTextField(String.valueOf(fridgeTemp), 5);
+        private JTextField desiredFreezerTempInput = new JTextField(String.valueOf(freezerTemp), 5);
+        private JTextField desiredRoomTempInput = new JTextField(String.valueOf(roomTemp), 5);
         
+        /**
+         * Status labels
+         */
+        private JLabel fridgeDoorStatus = new JLabel("Fridge door closed");
+        private JLabel freezerDoorStatus = new JLabel("Freezer door closed");
+        private JLabel fridgeLightStatus = new JLabel("Fridge light off");
+        private JLabel freezerLightStatus = new JLabel("Freezer light off");
+        private JLabel fridgeTempStatus = new JLabel("Fridge temp <" 
+                + desiredFridgeTempInput.getText() + ">");
+        private JLabel freezerTempStatus = new JLabel("Freezer temp <" 
+                + desiredFreezerTempInput.getText() + ">");
+        private JLabel roomTempStatus = new JLabel("Room temp <" 
+                + desiredRoomTempInput.getText() + ">");
+
         /**
          * Panels to sort the various components
          */
