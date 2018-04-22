@@ -1,7 +1,7 @@
 import java.util.Properties;
 
 /**
- * @author Noah, Randy, Ricky
+ * @author Noah, Randy
  * This reads in "properties.cfg" and set up all default values for refrigerator
  */
 public class Config {

@@ -5,7 +5,7 @@ import java.util.Observer;
  * The context is an observer for the clock and stores the context info for
  * states
  *
- * @authors Randy, Noah, Ricky
+ * @authors Randy, Noah
  */
 public class RefrigeratorContext implements Observer {
 

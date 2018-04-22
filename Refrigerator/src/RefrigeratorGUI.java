@@ -7,7 +7,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 /**
- * @author Randy, Noah, Ricky
+ * @author Randy, Noah
  * <p>
  * GUI that implements RefrigeratorDisplay and shows an interface of a refrigerator
  */

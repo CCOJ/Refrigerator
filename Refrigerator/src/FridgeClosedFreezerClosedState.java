@@ -1,5 +1,5 @@
 /**
- * @author Randy, Noah, Ricky
+ * @author Randy, Noah
  * Fridge door closed; Freezer door closed
  */
 public class FridgeClosedFreezerClosedState extends RefrigeratorState {

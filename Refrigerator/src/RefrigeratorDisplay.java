@@ -1,7 +1,7 @@
 import java.util.Observable;
 
 /**
- * @author Randy, Noah, Ricky
+ * @author Randy, Noah
  * <p>
  * This implements the essential features of the refrigerator.
  */

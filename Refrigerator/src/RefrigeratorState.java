@@ -1,5 +1,5 @@
 /**
- * @author Randy, Noah, Ricky
+ * @author Randy, Noah
  * <p>
  * Base refrigerator state class that lets more states to be created if needed
  */

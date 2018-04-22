@@ -1,7 +1,7 @@
 import java.util.Observable;
 
 /**
- * @author Randy, Noah, Ricky
+ * @author Randy, Noah
  * <p>
  * This runs the clock on the refrigerator to allow time
  * when idling (warming) or cooling
