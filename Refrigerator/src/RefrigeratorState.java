@@ -1,6 +1,6 @@
 /**
  *
- * @author Randy, Noah Rickey
+ * @author Randy, Noah, Ricky
  */
 public abstract class RefrigeratorState {
     	protected static RefrigeratorContext context;

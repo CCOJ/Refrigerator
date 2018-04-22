@@ -68,5 +68,9 @@ public class FridgeClosedFreezerOpenState  extends RefrigeratorState{
                 display.fridgeDoorClosed();
 		display.freezerLightOn();
                 display.fridgeLightOff();
+                context.setFreezerRateLoss(context.config
+                        .getProperty("FreezerRateLossDoorOpen"));
+                context.setFridgeRateLoss(context.config
+                        .getProperty("FridgeRateLossDoorClosed"));
 	}
 }

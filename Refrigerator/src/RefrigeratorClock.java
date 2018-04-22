@@ -10,13 +10,14 @@ import java.util.Observable;
 public class RefrigeratorClock extends Observable implements Runnable {
 
     private static RefrigeratorClock instance;
+    private Thread thread = new Thread(this);
     
     public enum Events {
         CLOCK_TICKED_EVENT
     };
     
     private RefrigeratorClock() {
-        new Thread(this).start();
+        thread.start();
     }
 	/**
 	 * To get the instance
@@ -29,11 +30,11 @@ public class RefrigeratorClock extends Observable implements Runnable {
 		}
 		return instance;
 	}
-
+    @Override
     public void run() {
         try {
             while (true) {
-                Thread.sleep(1000);
+                Thread.sleep(10);
                 setChanged();
 		notifyObservers(Events.CLOCK_TICKED_EVENT);
             }
