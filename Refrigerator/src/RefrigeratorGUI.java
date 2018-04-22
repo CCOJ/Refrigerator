@@ -42,9 +42,9 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
         /**
          * Labels and textfields for desired temps of fridge, freezer, and room
          */
-        private JLabel desiredFridgeTempLabel = new JLabel("Desired fridge temp");
-        private JLabel desiredFreezerTempLabel = new JLabel("Desired freezer temp");
-        private JLabel desiredRoomTempLabel = new JLabel("Desired room temp");
+        private JLabel desiredFridgeTempLabel = new JLabel("Fridge temp: " + context.getDesiredFridgeTemp());
+        private JLabel desiredFreezerTempLabel = new JLabel("Freezer temp: " + context.getDesiredFreezerTemp());
+        private JLabel roomTempLabel = new JLabel("Room temp: " + context.getRoomTemp());
         private JTextField desiredFridgeTempInput = new JTextField(String.valueOf(context.getDesiredFridgeTemp()), 5);
         private JTextField desiredFreezerTempInput = new JTextField(String.valueOf(context.getDesiredFreezerTemp()), 5);
         private JTextField RoomTempInput = new JTextField(String.valueOf(context.getRoomTemp()), 5);
@@ -104,7 +104,7 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
             /**
              * Room temp request
              */
-            variablePane.add(desiredRoomTempLabel);
+            variablePane.add(roomTempLabel);
             variablePane.add(RoomTempInput);
             variablePane.add(roomTempRequest);
             /**
@@ -272,6 +272,7 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
      * Sets temperature for room
      */
     public void setRoomTempDisplay(int temp) {
+        gui.roomTempLabel.setText("Room Temp: " + temp);
         gui.roomTempStatus.setText("Room temp < " + temp + " >");
     }
 

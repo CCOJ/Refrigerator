@@ -1,19 +1,16 @@
-
 import java.util.Properties;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  * @author Noah, Randy, Ricky
+ * This reads in "properties.cfg" and set up all default values for refrigerator
  */
 public class Config {
 
     private Properties configFile;
 
+    /**
+     * Constructor obtains file and reads in data
+     */
     public Config() {
         configFile = new java.util.Properties();
         try {
@@ -24,8 +21,12 @@ public class Config {
         }
     }
 
+    /**
+     * Returns associated property of a key value pair
+     * @param key
+     * @return
+     */
     public int getProperty(String key) {
         return Integer.parseInt(this.configFile.getProperty(key));
-
     }
 }

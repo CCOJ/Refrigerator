@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * @author Randy, Noah, Ricky
+ * Fridge door opened; freezer door closed
  */
 public class FridgeOpenFreezerClosedState extends RefrigeratorState {
 
     private static FridgeOpenFreezerClosedState instance;
-
 
     static {
         instance = new FridgeOpenFreezerClosedState();

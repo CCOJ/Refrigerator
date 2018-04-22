@@ -1,4 +1,3 @@
-
 import java.util.Observable;
 
 /**
@@ -12,12 +11,16 @@ public class RefrigeratorClock extends Observable implements Runnable {
     private static RefrigeratorClock instance;
     private Thread thread = new Thread(this);
 
+    /**
+     * Events for clock
+     */
     public enum Events {
         CLOCK_TICKED_EVENT
     }
 
-    ;
-
+    /**
+     * Starts the thread when the clock object is created
+     */
     private RefrigeratorClock() {
         thread.start();
     }
@@ -35,10 +38,13 @@ public class RefrigeratorClock extends Observable implements Runnable {
     }
 
     @Override
+    /**
+     * Runs the ticks every 1000 milliseconds or 1 second
+     */
     public void run() {
         try {
             while (true) {
-                Thread.sleep(10);
+                Thread.sleep(1000);
                 setChanged();
                 notifyObservers(Events.CLOCK_TICKED_EVENT);
             }

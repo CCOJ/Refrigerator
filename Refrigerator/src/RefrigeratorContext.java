@@ -1,9 +1,8 @@
-
 import java.util.Observable;
 import java.util.Observer;
 
 /**
- * The context is an obserer for the clock and stores the context info for
+ * The context is an observer for the clock and stores the context info for
  * states
  *
  * @authors Randy, Noah, Ricky
@@ -117,60 +116,121 @@ public class RefrigeratorContext implements Observer {
     }
 
     /**
-     * Getters and setters for each temperature
+     * Gets room temp
+     * @return roomTemp
      */
     public int getRoomTemp() {
         return roomTemp;
     }
 
+    /**
+     * Sets room temp
+     * @param roomTemp
+     */
     public void setRoomTemp(int roomTemp) {
         this.roomTemp = roomTemp;
     }
 
+    /**
+     * Gets fridge temp
+     * @return fridgeTemp
+     */
     public int getFridgeTemp() {
         return fridgeTemp;
     }
 
+    /**
+     * Sets fridge temp
+     * @param fridgeTemp
+     */
     public void setFridgeTemp(int fridgeTemp) {
         this.fridgeTemp = fridgeTemp;
     }
 
+    /**
+     * Gets freezer temp
+     * @return freezer temp
+     */
     public int getFreezerTemp() {
         return freezerTemp;
     }
 
+    /**
+     * Sets freezer temp
+     * @param freezerTemp
+     */
+    public void setFreezerTemp(int freezerTemp) {
+        this.freezerTemp = freezerTemp;
+    }
+
+    /**
+     * Gets desired fridge temp
+     * @return desiredFridgeTemp
+     */
     public int getDesiredFridgeTemp() {
         return desiredFridgeTemp;
     }
 
+    /**
+     * Sets desired fridge temp
+     * @param desiredFridgeTemp
+     */
     public void setDesiredFridgeTemp(int desiredFridgeTemp) {
         this.desiredFridgeTemp = desiredFridgeTemp;
     }
 
+    /**
+     * Gets desired freezer temp
+     * @return desiredFreezerTemp
+     */
     public int getDesiredFreezerTemp() {
         return desiredFreezerTemp;
     }
 
+    /**
+     * Sets desired freezer temp
+     * @param desiredFreezerTemp
+     */
     public void setDesiredFreezerTemp(int desiredFreezerTemp) {
         this.desiredFreezerTemp = desiredFreezerTemp;
     }
 
+    /**
+     * Gets fridge rate loss
+     * @return
+     */
     public int getFridgeRateLoss() {
         return fridgeRateLoss;
     }
 
+    /**
+     * Sets fridge rate loss
+     * @param fridgeRateLoss
+     */
     public void setFridgeRateLoss(int fridgeRateLoss) {
         this.fridgeRateLoss = fridgeRateLoss;
     }
 
+    /**
+     * Gets freezer rate loss
+     * @return
+     */
     public int getFreezerRateLoss() {
         return freezerRateLoss;
     }
 
+    /**
+     * Sets freezer rate loss
+     * @param freezerRateLoss
+     */
     public void setFreezerRateLoss(int freezerRateLoss) {
         this.freezerRateLoss = freezerRateLoss;
     }
 
+    /**
+     * Gets fridge compressor status
+     * @return "on" when true, "off" when false
+     */
     public String getFridgeCompressor() {
         if (fridgeCompressorOn) {
             return "on";
@@ -179,6 +239,10 @@ public class RefrigeratorContext implements Observer {
         }
     }
 
+    /**
+     * Gets freezer compressor status
+     * @return "on" when true, "off" when false
+     */
     public String getFreezerCompressor() {
         if (freezerCompressorOn) {
             return "on";
@@ -199,21 +263,29 @@ public class RefrigeratorContext implements Observer {
 
         /**
          * If fridge compressor is on, decrease fridge temp
-         * else, increase fridge temp
          */
         if (fridgeCompressorOn && (time % config.getProperty("FridgeCoolRate") == 0)) {
             fridgeTemp--;
-        } else if (!fridgeCompressorOn && (time % fridgeRateLoss == 0) && fridgeTemp < roomTemp) {
+        }
+
+        /**
+         * Increases fridge temp every loss interval
+         */
+        if (time % fridgeRateLoss == 0 && fridgeTemp < roomTemp) {
             fridgeTemp++;
         }
 
         /**
          * If freezer compressor is on, decrease freezer temp
-         * else, increase freezer temp
          */
         if (freezerCompressorOn && (time % config.getProperty("FreezerCoolRate") == 0)) {
             freezerTemp--;
-        } else if (!fridgeCompressorOn && (time % freezerRateLoss == 0) && freezerTemp < roomTemp) {
+        }
+
+        /**
+         * Increases freezer temp every loss interval
+         */
+        if (time % freezerRateLoss == 0 && freezerTemp < roomTemp) {
             freezerTemp++;
         }
 
@@ -222,7 +294,6 @@ public class RefrigeratorContext implements Observer {
          */
         if (fridgeTemp >= desiredFridgeTemp +
                 config.getProperty("FridgeCompressorStartDiff")) {
-
             fridgeCompressorOn = true;
         }
 
@@ -231,7 +302,6 @@ public class RefrigeratorContext implements Observer {
          */
         if (freezerTemp >= desiredFreezerTemp +
                 config.getProperty("FreezerCompressorStartDiff")) {
-
             freezerCompressorOn = true;
         }
 
@@ -240,7 +310,6 @@ public class RefrigeratorContext implements Observer {
          */
         if (fridgeTemp <= desiredFridgeTemp -
                 config.getProperty("FridgeCompressorStartDiff")) {
-
             fridgeCompressorOn = false;
         }
 
@@ -249,14 +318,12 @@ public class RefrigeratorContext implements Observer {
          */
         if (freezerTemp <= desiredFreezerTemp -
                 config.getProperty("FreezerCompressorStartDiff")) {
-
             freezerCompressorOn = false;
         }
 
         /**
          * Set all temps to display current values and display compressor status
          */
-
         refrigeratorDisplay.setFridgeTempDisplay(fridgeTemp);
         refrigeratorDisplay.setFreezerTempDisplay(freezerTemp);
         refrigeratorDisplay.setFridgeCompressorDisplay();

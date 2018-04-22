@@ -1,12 +1,14 @@
 /**
  * @author Randy, Noah, Ricky
+ * <p>
+ * Base refrigerator state class that lets more states to be created if needed
  */
 public abstract class RefrigeratorState {
     protected static RefrigeratorContext context;
     protected static RefrigeratorDisplay display;
 
     /**
-     * Initialzies the context and display
+     * Initializes the context and display
      */
     protected RefrigeratorState() {
         context = RefrigeratorContext.instance();
