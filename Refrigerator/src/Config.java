@@ -8,26 +8,24 @@ import java.util.Properties;
  */
 
 /**
- *
  * @author Noah, Randy, Ricky
  */
 public class Config {
-    
-    private Properties configFile = new java.util.Properties();
-    public Config(){
-	configFile = new java.util.Properties();
-	try {
+
+    private Properties configFile;
+
+    public Config() {
+        configFile = new java.util.Properties();
+        try {
             configFile.load(this.getClass().getClassLoader().
-            getResourceAsStream("properties.cfg"));
-	}
-        catch(Exception eta){
-	    eta.printStackTrace();
-	}
+                    getResourceAsStream("properties.cfg"));
+        } catch (Exception eta) {
+            eta.printStackTrace();
+        }
     }
- 
-    public int getProperty(String key)
-    {
-	return Integer.parseInt(this.configFile.getProperty(key));
-	
+
+    public int getProperty(String key) {
+        return Integer.parseInt(this.configFile.getProperty(key));
+
     }
 }

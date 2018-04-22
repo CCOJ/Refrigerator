@@ -3,29 +3,30 @@ import java.util.Observable;
 
 /**
  * @author Randy, Noah, Ricky
- *
+ * <p>
  * This implements the essential features of the refrigerator.
  */
-public abstract class RefrigeratorDisplay extends Observable{
-    
+public abstract class RefrigeratorDisplay extends Observable {
+
     protected static RefrigeratorContext context;
     protected static RefrigeratorDisplay instance;
 
     protected RefrigeratorDisplay() {
-	instance = this;
-	context = RefrigeratorContext.instance();
+        instance = this;
+        context = RefrigeratorContext.instance();
     }
 
     public static RefrigeratorDisplay instance() {
-	return instance;
+        return instance;
     }
+
     /**
-    * Do the initializations to make the context an observer
-    */
+     * Do the initializations to make the context an observer
+     */
     public void initialize() {
-	instance().addObserver(context);
-	context.initialize();
-    }    
+        instance().addObserver(context);
+        context.initialize();
+    }
 
     /**
      * Fridge door is now opened
@@ -68,31 +69,37 @@ public abstract class RefrigeratorDisplay extends Observable{
     public abstract void freezerLightOff();
 
     /**
-     * Sets temperature for fridge; Only 37 to 41 degree Fahrenheit
+     * Sets temperature for fridge
      */
     public abstract void setFridgeTempDisplay(int temp);
 
     /**
-     * Sets temperature for freezer; Only 0 to -9 degree Fahrenheit
+     * Sets temperature for freezer
      */
     public abstract void setFreezerTempDisplay(int temp);
 
     /**
-     * Sets temperature for room; Only 50 to 110 degree Fahrenheit
+     * Sets temperature for room
      */
     public abstract void setRoomTempDisplay(int temp);
-        /**
-     * Sets temperature for fridge; Only 37 to 41 degree Fahrenheit
+
+    /**
+     * Sets temperature for fridge
      */
     public abstract void setDesiredFridgeTempDisplay();
 
     /**
-     * Sets temperature for freezer; Only 0 to -9 degree Fahrenheit
+     * Sets temperature for freezer
      */
     public abstract void setDesiredFreezerTempDisplay();
 
     /**
-     * Sets temperature for room; Only 50 to 110 degree Fahrenheit
+     * Set fridge compressor status
      */
-    public abstract void setDesiredRoomTempDisplay();
+    public abstract void setFridgeCompressorDisplay();
+
+    /**
+     * Set freezer compressor status
+     */
+    public abstract void setFreezerCompressorDisplay();
 }

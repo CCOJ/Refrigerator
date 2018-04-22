@@ -9,223 +9,258 @@ import java.util.Observer;
  * @authors Randy, Noah, Ricky
  */
 public class RefrigeratorContext implements Observer {
-    
-	public static enum Events {
-		FRIDGE_DOOR_CLOSED_EVENT,
-                FRIDGE_DOOR_OPENED_EVENT,
-                FREEZER_DOOR_CLOSED_EVENT,
-                FREEZER_DOOR_OPENED_EVENT
-	};
-	static {
-		instance = new RefrigeratorContext();
-		refrigeratorDisplay = RefrigeratorDisplay.instance();
-	}              
-	private static RefrigeratorDisplay refrigeratorDisplay;
-	private RefrigeratorState currentState;
-	private static RefrigeratorContext instance;
-        public Config config = new Config();
-        //Variables used globally will be here in the context class.
-        private boolean fridgeCompressorOn;
-        private boolean freezerCompressorOn;
-        private int fridgeRateLoss = 
-                config.getProperty("FridgeRateLossDoorClosed");
-        private int freezerRateLoss = 
-                config.getProperty("FreezerRateLossDoorClosed");
-        private int roomTemp = config.getProperty("RoomLow");
-        private int fridgeTemp = config.getProperty("RoomLow");
-        private int freezerTemp = config.getProperty("RoomLow");
-        private int desiredFridgeTemp = config.getProperty("FridgeLow");
-        private int desiredFreezerTemp = config.getProperty("FreezerLow");
-        private int desiredRoomTemp = config.getProperty("RoomLow");
-        private int time = 0;
 
-	/**
-	 * Make it a singleton
-	 */
-	private RefrigeratorContext() {
-	}
+    /**
+     * Events for all states of doors being opened or closed
+     */
+    public static enum Events {
+        FRIDGE_DOOR_CLOSED_EVENT,
+        FRIDGE_DOOR_OPENED_EVENT,
+        FREEZER_DOOR_CLOSED_EVENT,
+        FREEZER_DOOR_OPENED_EVENT
+    }
 
-	/**
-	 * Return the instance
-	 * 
-	 * @return the object
-	 */
-	public static RefrigeratorContext instance() {
-		if (instance == null) {
-			instance = new RefrigeratorContext();
-		}
-		return instance;
-	}
+    private static RefrigeratorDisplay refrigeratorDisplay;
+    private RefrigeratorState currentState;
+    private static RefrigeratorContext instance;
 
-	public void initialize() {
-		instance.changeCurrentState(FridgeClosedFreezerClosedState.instance());
-		RefrigeratorClock.instance().addObserver(instance);
-	}
+    static {
+        instance = new RefrigeratorContext();
+        refrigeratorDisplay = RefrigeratorDisplay.instance();
+    }
 
-	/**
-	 * For observer
-	 * 
-	 * @param observable
-	 *            will be the clock
-	 * @param arg
-	 *            the event that clock has ticked
-	 */
-	@Override
-	public void update(Observable observable, Object arg) {
-            if (arg.equals(RefrigeratorClock.Events.CLOCK_TICKED_EVENT)) {
-		processClockTick();
-            }   
-            currentState.handle(arg);
-	}
+    public Config config = new Config();
 
-	/**
-	 * handle one of the several other events such as door close
-	 * 
-	 * @param arg
-	 *            the event from the GUI
-	 */
-	public void processEvent(Object arg) {
-            if (arg.equals(RefrigeratorClock.Events.CLOCK_TICKED_EVENT)) {
-		processClockTick();
-            }   
-            
-            currentState.handle(arg);
-	}
+    /**
+     * Variables used globally will be here in the context class.
+     */
+    private boolean fridgeCompressorOn;
+    private boolean freezerCompressorOn;
+    private int fridgeRateLoss =
+            config.getProperty("FridgeRateLossDoorClosed");
+    private int freezerRateLoss =
+            config.getProperty("FreezerRateLossDoorClosed");
+    private int roomTemp = config.getProperty("RoomLow");
+    private int fridgeTemp = config.getProperty("RoomLow");
+    private int freezerTemp = config.getProperty("RoomLow");
+    private int desiredFridgeTemp = config.getProperty("FridgeLow");
+    private int desiredFreezerTemp = config.getProperty("FreezerLow");
+    private int time = 0;
 
-	/**
-	 * Called from the states to change the current state
-	 * 
-	 * @param nextState
-	 *            the next state
-	 */
-	public void changeCurrentState(RefrigeratorState nextState) {
-            currentState = nextState;
-            nextState.run();
-	}
+    /**
+     * Make it a singleton
+     */
+    private RefrigeratorContext() {
+    }
 
-	/**
-	 * Gets the display
-	 * 
-	 * @return the display
-	 */
-	public RefrigeratorDisplay getDisplay() {
-		return refrigeratorDisplay;
-	}
+    /**
+     * Return the instance
+     *
+     * @return the object
+     */
+    public static RefrigeratorContext instance() {
+        if (instance == null) {
+            instance = new RefrigeratorContext();
+        }
+        return instance;
+    }
 
-        /**
-         * Getters and setters for each temperature
-         */
-        public int getRoomTemp(){
-                return roomTemp;
+    public void initialize() {
+        instance.changeCurrentState(FridgeClosedFreezerClosedState.instance());
+        RefrigeratorClock.instance().addObserver(instance);
+    }
+
+    /**
+     * For observer
+     *
+     * @param observable will be the clock
+     * @param arg        the event that clock has ticked
+     */
+    @Override
+    public void update(Observable observable, Object arg) {
+        if (arg.equals(RefrigeratorClock.Events.CLOCK_TICKED_EVENT)) {
+            processClockTick();
+        }
+        currentState.handle(arg);
+    }
+
+    /**
+     * handle one of the several other events such as door close
+     *
+     * @param arg the event from the GUI
+     */
+    public void processEvent(Object arg) {
+        if (arg.equals(RefrigeratorClock.Events.CLOCK_TICKED_EVENT)) {
+            processClockTick();
         }
 
-        public void setRoomTemp(int roomTemp) {
-                this.roomTemp = roomTemp;
-        }
+        currentState.handle(arg);
+    }
 
-        public int getFridgeTemp() {
-                return fridgeTemp;
-        }
+    /**
+     * Called from the states to change the current state
+     *
+     * @param nextState the next state
+     */
+    public void changeCurrentState(RefrigeratorState nextState) {
+        currentState = nextState;
+        nextState.run();
+    }
 
-        public void setFridgeTemp(int fridgeTemp) {
-                this.fridgeTemp = fridgeTemp;
-        }
+    /**
+     * Gets the display
+     *
+     * @return the display
+     */
+    public RefrigeratorDisplay getDisplay() {
+        return refrigeratorDisplay;
+    }
 
-        public int getFreezerTemp() {
-                return freezerTemp;
-        }
+    /**
+     * Getters and setters for each temperature
+     */
+    public int getRoomTemp() {
+        return roomTemp;
+    }
 
-        public int getDesiredFridgeTemp() {
-                return desiredFridgeTemp;
-        }
+    public void setRoomTemp(int roomTemp) {
+        this.roomTemp = roomTemp;
+    }
 
-        public void setDesiredFridgeTemp(int desiredFridgeTemp) {
-                this.desiredFridgeTemp = desiredFridgeTemp;
-        }
+    public int getFridgeTemp() {
+        return fridgeTemp;
+    }
 
-        public int getDesiredFreezerTemp() {
-                return desiredFreezerTemp;
-        }
+    public void setFridgeTemp(int fridgeTemp) {
+        this.fridgeTemp = fridgeTemp;
+    }
 
-        public void setDesiredFreezerTemp(int desiredFreezerTemp) {
-                this.desiredFreezerTemp = desiredFreezerTemp;
-        }
-        public int getDesiredRoomTemp() {
-                return desiredRoomTemp;
-        }
+    public int getFreezerTemp() {
+        return freezerTemp;
+    }
 
-        public void setDesiredRoomTemp(int desiredRoomTemp) {
-                this.desiredRoomTemp = desiredRoomTemp;
-        }
+    public int getDesiredFridgeTemp() {
+        return desiredFridgeTemp;
+    }
 
-        public int getFridgeRateLoss() {
-            return fridgeRateLoss;
-        }
+    public void setDesiredFridgeTemp(int desiredFridgeTemp) {
+        this.desiredFridgeTemp = desiredFridgeTemp;
+    }
 
-        public void setFridgeRateLoss(int fridgeRateLoss) {
-            this.fridgeRateLoss = fridgeRateLoss;
-        }
+    public int getDesiredFreezerTemp() {
+        return desiredFreezerTemp;
+    }
 
-        public int getFreezerRateLoss() {
-            return freezerRateLoss;
-        }
+    public void setDesiredFreezerTemp(int desiredFreezerTemp) {
+        this.desiredFreezerTemp = desiredFreezerTemp;
+    }
 
-        public void setFreezerRateLoss(int freezerRateLoss) {
-            this.freezerRateLoss = freezerRateLoss;
+    public int getFridgeRateLoss() {
+        return fridgeRateLoss;
+    }
+
+    public void setFridgeRateLoss(int fridgeRateLoss) {
+        this.fridgeRateLoss = fridgeRateLoss;
+    }
+
+    public int getFreezerRateLoss() {
+        return freezerRateLoss;
+    }
+
+    public void setFreezerRateLoss(int freezerRateLoss) {
+        this.freezerRateLoss = freezerRateLoss;
+    }
+
+    public String getFridgeCompressor() {
+        if (fridgeCompressorOn) {
+            return "on";
+        } else {
+            return "off";
         }
-        
-        
+    }
+
+    public String getFreezerCompressor() {
+        if (freezerCompressorOn) {
+            return "on";
+        } else {
+            return "off";
+        }
+    }
+
     /**
      * Handles the changing of temperatures with each clock tick notified
      * from the observable
      */
-   // public void setFreezerTemp(int freezerTemp) {
-   //     this.freezerTemp = freezerTemp;
-    //}
-
     private void processClockTick() {
+        /**
+         * Increase time ticked
+         */
         time++;
-        if(fridgeCompressorOn == true &&
-                (time % config.getProperty("FridgeCoolRate") == 0)){
-            
+
+        /**
+         * If fridge compressor is on, decrease fridge temp
+         * else, increase fridge temp
+         */
+        if (fridgeCompressorOn && (time % config.getProperty("FridgeCoolRate") == 0)) {
             fridgeTemp--;
-        }
-        if(freezerCompressorOn == true &&
-                (time % config.getProperty("FreezerCoolRate") == 0)){
-            
-            freezerTemp--;
-        }
-        
-        if(time % fridgeRateLoss == 0 && fridgeTemp < roomTemp){
+        } else if (!fridgeCompressorOn && (time % fridgeRateLoss == 0) && fridgeTemp < roomTemp) {
             fridgeTemp++;
         }
-        if(time % freezerRateLoss == 0  && freezerTemp < roomTemp){
+
+        /**
+         * If freezer compressor is on, decrease freezer temp
+         * else, increase freezer temp
+         */
+        if (freezerCompressorOn && (time % config.getProperty("FreezerCoolRate") == 0)) {
+            freezerTemp--;
+        } else if (!fridgeCompressorOn && (time % freezerRateLoss == 0) && freezerTemp < roomTemp) {
             freezerTemp++;
         }
-        if(fridgeTemp >= desiredFridgeTemp +
-                config.getProperty("FridgeCompressorStartDiff")){
-            
+
+        /**
+         * If fridge temp is above threshold, turn on compressor
+         */
+        if (fridgeTemp >= desiredFridgeTemp +
+                config.getProperty("FridgeCompressorStartDiff")) {
+
             fridgeCompressorOn = true;
         }
-        if(freezerTemp >= desiredFreezerTemp +
-                config.getProperty("FreezerCompressorStartDiff")){
-            
+
+        /**
+         * If freezer temp is above threshold, turn on compressor
+         */
+        if (freezerTemp >= desiredFreezerTemp +
+                config.getProperty("FreezerCompressorStartDiff")) {
+
             freezerCompressorOn = true;
         }
-        if(fridgeTemp <= desiredFridgeTemp -
-                config.getProperty("FridgeCompressorStartDiff")){
-            
+
+        /**
+         * If fridge temp is below threshold, turn off compressor
+         */
+        if (fridgeTemp <= desiredFridgeTemp -
+                config.getProperty("FridgeCompressorStartDiff")) {
+
             fridgeCompressorOn = false;
         }
-        if(freezerTemp  <= desiredFreezerTemp -
-                config.getProperty("FreezerCompressorStartDiff")){
-            
+
+        /**
+         * If freezer temp is below threshold, turn off compressor
+         */
+        if (freezerTemp <= desiredFreezerTemp -
+                config.getProperty("FreezerCompressorStartDiff")) {
+
             freezerCompressorOn = false;
         }
-        
-        refrigeratorDisplay.setFreezerTempDisplay(freezerTemp);
+
+        /**
+         * Set all temps to display current values and display compressor status
+         */
+
         refrigeratorDisplay.setFridgeTempDisplay(fridgeTemp);
-        refrigeratorDisplay.setRoomTempDisplay(roomTemp);
+        refrigeratorDisplay.setFreezerTempDisplay(freezerTemp);
+        refrigeratorDisplay.setFridgeCompressorDisplay();
+        refrigeratorDisplay.setFreezerCompressorDisplay();
     }
 
 }

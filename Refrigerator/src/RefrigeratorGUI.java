@@ -6,28 +6,28 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
-
 /**
  * @author Randy, Noah, Ricky
- *
+ * <p>
  * GUI that implements RefrigeratorDisplay and shows an interface of a refrigerator
  */
-public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListener{
+public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListener {
 
-    private static GUI gui;
-    
-    
-    private RefrigeratorState currentState;                 //The current state of the refrigerator
-    private RefrigeratorDisplay display;         //Displays the refrigerator
+    private static GUI gui;                 //The GUI of refrigerator
+    private RefrigeratorState currentState; //The current state of the refrigerator
+    private RefrigeratorDisplay display;    //Displays the refrigerator
 
-    
-    private RefrigeratorGUI() {        
+    /**
+     * Constructor that sets up a GUI with default settings and initializes a refrigerator
+     */
+    private RefrigeratorGUI() {
         currentState = new FridgeClosedFreezerClosedState();
         display = RefrigeratorDisplay.instance();
         gui = new GUI();
-	initialize();
+        initialize();
     }
-    private class GUI extends JFrame{
+
+    private class GUI extends JFrame {
         /**
          * ActionEvent buttons
          */
@@ -39,7 +39,6 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
         private JButton freezerDoorCloser = new JButton("Close freezer door");
         private JButton freezerDoorOpener = new JButton("Open freezer door");
 
-
         /**
          * Labels and textfields for desired temps of fridge, freezer, and room
          */
@@ -48,8 +47,8 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
         private JLabel desiredRoomTempLabel = new JLabel("Desired room temp");
         private JTextField desiredFridgeTempInput = new JTextField(String.valueOf(context.getDesiredFridgeTemp()), 5);
         private JTextField desiredFreezerTempInput = new JTextField(String.valueOf(context.getDesiredFreezerTemp()), 5);
-        private JTextField desiredRoomTempInput = new JTextField(String.valueOf(context.getDesiredRoomTemp()), 5);
-        
+        private JTextField RoomTempInput = new JTextField(String.valueOf(context.getRoomTemp()), 5);
+
         /**
          * Status labels
          */
@@ -57,24 +56,32 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
         private JLabel freezerDoorStatus = new JLabel("Freezer door closed");
         private JLabel fridgeLightStatus = new JLabel("Fridge light off");
         private JLabel freezerLightStatus = new JLabel("Freezer light off");
-        private JLabel fridgeTempStatus = new JLabel("Fridge temp < " 
+        private JLabel fridgeTempStatus = new JLabel("Fridge temp < "
                 + context.getFridgeTemp() + " >");
-        private JLabel freezerTempStatus = new JLabel("Freezer temp < " 
+        private JLabel freezerTempStatus = new JLabel("Freezer temp < "
                 + context.getFreezerTemp() + " >");
-        private JLabel roomTempStatus = new JLabel("Room temp < " 
+        private JLabel roomTempStatus = new JLabel("Room temp < "
                 + context.getRoomTemp() + " >");
+        private JLabel fridgeCompressorStatus = new JLabel("Fridge compressor < "
+                + context.getFridgeCompressor() + " >");
+        private JLabel freezerCompressorStatus = new JLabel("Freezer compressor < "
+                + context.getFreezerCompressor() + " >");
 
         /**
          * Panels to sort the various components
          */
         private JPanel variablePane = new JPanel(new FlowLayout());
         private JPanel doorPane = new JPanel(new FlowLayout());
-        private JPanel statusPane = new JPanel(new GridLayout(1,7));
-        private JPanel mainPane = new JPanel(new GridLayout(3,1, 5, 30));
+        private JPanel statusPane = new JPanel(new GridLayout(1, 9));
+        private JPanel mainPane = new JPanel(new GridLayout(3, 1, 5, 30));
+
         /**
          * Sets up the layout of the Refrigerator GUI
          */
         private GUI() {
+            /**
+             * Preparation for the GUI and layout
+             */
             super("Refrigerator");
             addWindowListener(new WindowAdapter() {
                 public void WindowClosing(WindowEvent event) {
@@ -82,40 +89,65 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
                 }
             });
             getContentPane().setLayout(new FlowLayout());
-            //Fridge Temp request
+            /**
+             * Fridge temp request
+             */
             variablePane.add(desiredFridgeTempLabel);
             variablePane.add(desiredFridgeTempInput);
             variablePane.add(fridgeTempRequest);
-            //Freezer temp request
+            /**
+             * Freezer temp request
+             */
             variablePane.add(desiredFreezerTempLabel);
             variablePane.add(desiredFreezerTempInput);
             variablePane.add(freezerTempRequest);
-            //Room temp request
+            /**
+             * Room temp request
+             */
             variablePane.add(desiredRoomTempLabel);
-            variablePane.add(desiredRoomTempInput);
+            variablePane.add(RoomTempInput);
             variablePane.add(roomTempRequest);
-            //Fridge door
+            /**
+             * Fridge door
+             */
             doorPane.add(fridgeDoorCloser);
             doorPane.add(fridgeDoorOpener);
-            //Freezer door
+            /**
+             * Freezer door
+             */
             doorPane.add(freezerDoorCloser);
             doorPane.add(freezerDoorOpener);
-            //Door status
+            /**
+             * Door status
+             */
             statusPane.add(fridgeDoorStatus);
             statusPane.add(freezerDoorStatus);
-            //Light status
+            /**
+             * Light status
+             */
             statusPane.add(fridgeLightStatus);
             statusPane.add(freezerLightStatus);
-            //Temp status
+            /**
+             * Temp status
+             */
             statusPane.add(fridgeTempStatus);
             statusPane.add(freezerTempStatus);
             statusPane.add(roomTempStatus);
-            //Whole frame
+            /**
+             * Compressor status
+             */
+            statusPane.add(fridgeCompressorStatus);
+            statusPane.add(freezerCompressorStatus);
+            /**
+             * Whole frame
+             */
             mainPane.add(variablePane);
             mainPane.add(doorPane);
             mainPane.add(statusPane);
             getContentPane().add(mainPane);
-            //Action listeners
+            /**
+             * Action listeners
+             */
             fridgeTempRequest.addActionListener(RefrigeratorGUI.this);
             freezerTempRequest.addActionListener(RefrigeratorGUI.this);
             roomTempRequest.addActionListener(RefrigeratorGUI.this);
@@ -123,50 +155,49 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
             fridgeDoorOpener.addActionListener(RefrigeratorGUI.this);
             freezerDoorCloser.addActionListener(RefrigeratorGUI.this);
             freezerDoorOpener.addActionListener(RefrigeratorGUI.this);
-            //Additional settings
+            /**
+             *  Additional Settings
+             */
             setDefaultCloseOperation(EXIT_ON_CLOSE); //Stop if closed
-            //Pack and make visible
+            /**
+             * Pack and show GUI
+             */
             pack();
             setVisible(true);
         }
     }
 
     /**
-     * Proccesses buttons pressed and calls the Refrigerator object's methods
+     * Processes buttons pressed and calls the Refrigerator object's methods
      */
     public void actionPerformed(ActionEvent event) {
-        if (event.getSource().equals(gui.fridgeTempRequest)) {         //Desired fridge temp request
+        if (event.getSource().equals(gui.fridgeTempRequest)) {//Desired fridge temp request
             String tempInput = gui.desiredFridgeTempInput.getText();
             int temp = Integer.parseInt(tempInput);
             processFridgeTempRequest(temp);
-        } 
-        else if (event.getSource().equals(gui.freezerTempRequest)) { //Desired freezer temp request
+        } else if (event.getSource().equals(gui.freezerTempRequest)) {//Desired freezer temp request
             String tempInput = gui.desiredFreezerTempInput.getText();
             int temp = Integer.parseInt(tempInput);
             processFreezerTempRequest(temp);
-        } 
-        else if (event.getSource().equals(gui.roomTempRequest)) {    //Desired room temp request
-            String tempInput = gui.desiredRoomTempInput.getText();
+        } else if (event.getSource().equals(gui.roomTempRequest)) {//Desired room temp request
+            String tempInput = gui.RoomTempInput.getText();
             int temp = Integer.parseInt(tempInput);
             processRoomTempRequest(temp);
-        } 
-        else if (event.getSource().equals(gui.fridgeDoorCloser)) {//Close fridge
+        } else if (event.getSource().equals(gui.fridgeDoorCloser)) {//Close fridge
             RefrigeratorContext.instance().processEvent(
                     RefrigeratorContext.Events.FRIDGE_DOOR_CLOSED_EVENT);
-        } 
-        else if (event.getSource().equals(gui.fridgeDoorOpener)) {//Open fridge
+        } else if (event.getSource().equals(gui.fridgeDoorOpener)) {//Open fridge
             RefrigeratorContext.instance().processEvent(
                     RefrigeratorContext.Events.FRIDGE_DOOR_OPENED_EVENT);
-        } 
-        else if (event.getSource().equals(gui.freezerDoorCloser)) {//Close freezer
+        } else if (event.getSource().equals(gui.freezerDoorCloser)) {//Close freezer
             RefrigeratorContext.instance().processEvent(
                     RefrigeratorContext.Events.FREEZER_DOOR_CLOSED_EVENT);
-        } 
-        else if (event.getSource().equals(gui.freezerDoorOpener)) {//Open freezer
+        } else if (event.getSource().equals(gui.freezerDoorOpener)) {//Open freezer
             RefrigeratorContext.instance().processEvent(
                     RefrigeratorContext.Events.FREEZER_DOOR_OPENED_EVENT);
         }
     }
+
     /**
      * Fridge door is now opened
      */
@@ -222,102 +253,124 @@ public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListen
     public void freezerLightOff() {
         gui.freezerLightStatus.setText("Freezer light off");
     }
+
     /**
-     * Sets temperature for fridge; Only 37 to 41 degree Fahrenheit
+     * Sets temperature for fridge
      */
-    public void setFridgeTempDisplay(int temp){
+    public void setFridgeTempDisplay(int temp) {
         gui.fridgeTempStatus.setText("Fridge temp < " + temp + " >");
-    };
+    }
 
     /**
-     * Sets temperature for freezer; Only 0 to -9 degree Fahrenheit
+     * Sets temperature for freezer
      */
-    public void setFreezerTempDisplay(int temp){
+    public void setFreezerTempDisplay(int temp) {
         gui.freezerTempStatus.setText("Freezer temp < " + temp + " >");
-    };
+    }
 
     /**
-     * Sets temperature for room; Only 50 to 110 degree Fahrenheit
+     * Sets temperature for room
      */
-    public void setRoomTempDisplay(int temp){
+    public void setRoomTempDisplay(int temp) {
         gui.roomTempStatus.setText("Room temp < " + temp + " >");
-    };
+    }
+
     /**
-     * Sets temperature for fridge; Only 37 to 41 degree Fahrenheit
+     * Sets temperature for fridge
      */
     public void setDesiredFridgeTempDisplay() {
-        gui.desiredFridgeTempLabel.setText("Fridge temp: " 
+        gui.desiredFridgeTempLabel.setText("Fridge temp: "
                 + String.valueOf(context.getDesiredFridgeTemp()));
     }
 
     /**
-     * Sets temperature for freezer; Only 0 to -9 degree Fahrenheit
+     * Sets temperature for freezer
      */
     public void setDesiredFreezerTempDisplay() {
-         gui.desiredFreezerTempLabel.setText("Freezer temp: " 
-                 + String.valueOf(context.getDesiredFreezerTemp()));
+        gui.desiredFreezerTempLabel.setText("Freezer temp: "
+                + String.valueOf(context.getDesiredFreezerTemp()));
     }
 
     /**
-     * Sets temperature for room; Only 50 to 110 degree Fahrenheit
+     * Set fridge compressor status
      */
-    public void setDesiredRoomTempDisplay() {
-         gui.desiredRoomTempLabel.setText("Room temp: " 
-                 + String.valueOf(context.getDesiredRoomTemp()));
+    public void setFridgeCompressorDisplay() {
+        gui.fridgeCompressorStatus.setText("Fridge compressor < "
+                + context.getFridgeCompressor() + " >");
     }
+
+    /**
+     * Set freezer compressor status
+     */
+    public void setFreezerCompressorDisplay() {
+        gui.freezerCompressorStatus.setText("Freezer compressor < "
+                + context.getFreezerCompressor() + " >");
+    }
+
     /**
      * Processes desired fridge temp request.
-     * Only 37 to 41 degree Fahrenheit.
      */
     public void processFridgeTempRequest(int temp) {
-        if (temp < context.config.getProperty("FridgeLow")) { //Checks request and limits to the allowed fridge temp range
+        /**
+         * Checks request and limits to the allowed fridge temp range
+         */
+        if (temp < context.config.getProperty("FridgeLow")) {
             temp = context.config.getProperty("FridgeLow");
         } else if (temp > context.config.getProperty("FridgeHigh")) {
             temp = context.config.getProperty("FridgeHigh");
         }
 
-        context.setDesiredFridgeTemp(temp); //Sets desired fridge temp
-
-        //Temporary below for testing
-        //context.setFridgeTemp(temp);
+        /**
+         * Set the desired fridge temp and change status
+         */
+        context.setDesiredFridgeTemp(temp);
         display.setDesiredFridgeTempDisplay();
     }
 
     /**
      * Processes desired freezer temp request.
-     * Only 0 to -9 degree Fahrenheit.
      */
     public void processFreezerTempRequest(int temp) {
-        if (temp < context.config.getProperty("FreezerLow")) { //Checks request and limits to the allowed freezer temp range
+        /**
+         *  Checks request and limits to the allowed freezer temp range
+         */
+        if (temp < context.config.getProperty("FreezerLow")) {
             temp = context.config.getProperty("FreezerLow");
         } else if (temp > context.config.getProperty("FreezerHigh")) {
             temp = context.config.getProperty("FreezerHigh");
         }
 
-        context.setDesiredFreezerTemp(temp); //Sets desired freezer temp
-
-        //Temporary below for testing
-        //context.setFreezerTemp(temp);
+        /**
+         * Set desired freezer temp and change status
+         */
+        context.setDesiredFreezerTemp(temp);
         display.setDesiredFreezerTempDisplay();
     }
 
     /**
-     * Proccess desired room temp request.
-     * Only 50 to 110 degree Fahrenheit.
+     * Process desired room temp request.
      */
     public void processRoomTempRequest(int temp) {
-        if (temp < context.config.getProperty("RoomLow")) { //Checks request and limits to the allowed room temp range
+        /**
+         *  Checks request and limits to the allowed room temp range
+         */
+        if (temp < context.config.getProperty("RoomLow")) {
             temp = context.config.getProperty("RoomLow");
         } else if (temp > context.config.getProperty("RoomHigh")) {
             temp = context.config.getProperty("RoomHigh");
         }
 
-        context.setRoomTemp(temp); //Sets new room temp
-        display.setDesiredRoomTempDisplay(); //Updates GUI
+        /**
+         * Set room temp and change status
+         */
+        context.setRoomTemp(temp);
+        display.setRoomTempDisplay(context.getRoomTemp());
     }
 
+    /**
+     * This starts the GUI
+     */
     public static void main(String[] s) {
-        //RefrigeratorClock refrigeratorClock = new RefrigeratorClock();
         RefrigeratorGUI refrigerator = new RefrigeratorGUI();
     }
 }
