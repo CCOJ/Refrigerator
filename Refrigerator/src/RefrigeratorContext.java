@@ -264,63 +264,77 @@ public class RefrigeratorContext implements Observer {
         /**
          * If fridge compressor is on, decrease fridge temp
          */
-        if (fridgeCompressorOn && (time % config.getProperty("FridgeCoolRate") == 0)) {
+        if (fridgeCompressorOn
+                
+                && (time % config.getProperty("FridgeCoolRate") == 0)) {
             fridgeTemp--;
         }
 
         /**
          * Increases fridge temp every loss interval
          */
-        if (time % fridgeRateLoss == 0 && fridgeTemp < roomTemp) {
+        else if (fridgeCompressorOn == false 
+                && time % fridgeRateLoss == 0 
+                && fridgeTemp < roomTemp) {
             fridgeTemp++;
         }
 
         /**
          * If freezer compressor is on, decrease freezer temp
          */
-        if (freezerCompressorOn && (time % config.getProperty("FreezerCoolRate") == 0)) {
+        if (freezerCompressorOn 
+                && freezerRateLoss == config.getProperty("FreezerRateLossDoorClosed")
+                && (time % config.getProperty("FreezerCoolRate") == 0)) {
             freezerTemp--;
         }
 
         /**
          * Increases freezer temp every loss interval
          */
-        if (time % freezerRateLoss == 0 && freezerTemp < roomTemp) {
+        else if (freezerCompressorOn == false
+                && time % freezerRateLoss == 0 && freezerTemp < roomTemp) {
             freezerTemp++;
         }
 
         /**
-         * If fridge temp is above threshold, turn on compressor
+         * If fridge temp is above threshold, turn on compressor. The compressor
+         * can only be on when the door is closed. It will detect if the door is 
+         * open if the rateLoss is higher than usual. The compressor is only 
+         * shut off when the door is opened or the lower temp threshold has been
+         * reached
          */
-        if (fridgeTemp >= desiredFridgeTemp +
+        if( fridgeRateLoss != config.getProperty("FridgeRateLossDoorClosed")){
+            fridgeCompressorOn = false;
+        }
+        else if (fridgeTemp >= desiredFridgeTemp +
                 config.getProperty("FridgeCompressorStartDiff")) {
             fridgeCompressorOn = true;
         }
-
-        /**
-         * If freezer temp is above threshold, turn on compressor
-         */
-        if (freezerTemp >= desiredFreezerTemp +
-                config.getProperty("FreezerCompressorStartDiff")) {
-            freezerCompressorOn = true;
-        }
-
-        /**
-         * If fridge temp is below threshold, turn off compressor
-         */
-        if (fridgeTemp <= desiredFridgeTemp -
-                config.getProperty("FridgeCompressorStartDiff")) {
+        else if(fridgeTemp <= desiredFridgeTemp -
+                config.getProperty("FridgeCompressorStartDiff")){
             fridgeCompressorOn = false;
         }
 
         /**
-         * If freezer temp is below threshold, turn off compressor
+         * If freezer temp is above threshold, turn on compressor. The compressor
+         * can only be on when the door is closed. It will detect if the door is 
+         * open if the rateLoss is higher than usual. The compressor is only 
+         * shut off when the door is opened or the lower temp threshold has been
+         * reached
          */
-        if (freezerTemp <= desiredFreezerTemp -
-                config.getProperty("FreezerCompressorStartDiff")) {
+        if( freezerRateLoss != config.getProperty("FreezerRateLossDoorClosed")){
             freezerCompressorOn = false;
         }
-
+        else if (freezerTemp >= desiredFreezerTemp +
+                config.getProperty("FreezerCompressorStartDiff")) {
+            
+            freezerCompressorOn = true;
+        }
+        else if(freezerTemp <= desiredFreezerTemp -
+                config.getProperty("FreezerCompressorStartDiff")){
+            
+            freezerCompressorOn = false;
+        }
         /**
          * Set all temps to display current values and display compressor status
          */

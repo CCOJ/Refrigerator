@@ -10,6 +10,13 @@ import javax.swing.*;
  * @author Randy, Noah
  * <p>
  * GUI that implements RefrigeratorDisplay and shows an interface of a refrigerator
+ * This class also contains the main method to run the program.
+ * 
+ * This program will implement the functions of a fridge and freezer, displaying
+ * the temperatures of each with different forces acting on them. Depending on
+ * the state of either, the units will rise in temperature at different rates.
+ * The compressor is another process that acts to cool both units 
+ * 
  */
 public class RefrigeratorGUI extends RefrigeratorDisplay implements ActionListener {
 
